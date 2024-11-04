@@ -8,7 +8,7 @@ env:
 jobs:
   testRunner:
     name: Test in ${{ matrix.testMode }} ✨
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted]
     strategy:
       fail-fast: false
       matrix:
@@ -60,7 +60,7 @@ jobs:
   buildWebGL:
     needs: testRunner
     name: Build for WebGL 🖥️
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted]
     strategy:
       fail-fast: false
     steps:
@@ -104,7 +104,7 @@ jobs:
   buildWindows:
     needs: testRunner
     name: Build for Windows 🖥️
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted]
     strategy:
       fail-fast: false
     steps:
@@ -148,7 +148,7 @@ jobs:
   deployPages:
     needs: buildWebGL
     name: Deploy to Github Pages 🚀
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted]
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
